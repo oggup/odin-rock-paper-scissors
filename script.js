@@ -2,50 +2,64 @@ let options = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
 
-// this function generates a randomized option for the computer player by getting random decimal from Math.random then multiplying it by the array length of the options.  When function is executed it returns a string from the array in random order. Math.floor is used to round the numbers to the closest smallest whole interger.
-//computer choice//
+function game() {
+  playRound();
+}
 
-function computerPlay() {
+function playRound() {
+  const playerSelection = playerChoice();
+  const computerSelection = computerChoice();
+  const winner = compareSelections(playerSelection, computerSelection);
+  console.log("winner of the round:",winner);
+}
+
+function playerChoice() {
+  let input = prompt(" Type rock, paper, or scissors");
+  while (input == null) {
+    input = prompt(" Type rock, paper, or scissors");
+  }
+  input.toLowerCase();
+  let inputCheck = validateInput(input);
+  while (inputCheck == false) {
+    input = prompt(
+      "please type response correctly, capitalization does not matter"
+    );
+    while (input == null) {
+      input = prompt(" Type rock, paper, or scissors");
+    }
+    input = input.toLowerCase();
+    inputCheck = validateInput(input);
+  }
+
+  console.log("you typed", input);
+  return input;
+}
+
+function validateInput(input) {
+  return options.includes(input);
+}
+
+function computerChoice() {
   let index = Math.floor(Math.random() * Math.floor(options.length));
-  console.log(options[index]);
+  console.log("computer chose:", options[index]);
   return options[index];
 }
 
 function compareSelections(playerSelection, computerSelection) {
-    playerSelection.toLowerCase();
-  //checking for a tie//
   if (playerSelection === computerSelection) {
-    console.log("draw!");
-    return;
-  }
-  //for player rock//
-  if (playerSelection === "rock") {
-    if (computerSelection === "scissors") {
-      console.log("Player Wins");
-      return;
-    } else {
-      console.log("Computer wins!");
-      return;
-    }
-  }
-  //for player paper//
-  if (playerSelection === "paper") {
-    if (computerSelection === "scissors") {
-      console.log("Computer Wins");
-      return;
-    } else {
-      console.log("Player wins!");
-      return;
-    }
-  }
-  //for player scissors//
-  if (playerSelection === "scissors") {
-    if (computerSelection === "rock") {
-      console.log("Computer Wins");
-      return;
-    } else {
-      console.log("Player wins!");
-      return;
-    }
+    console.log("it's a tie");
+    return "tie";
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    console.log("you won round");
+    return "PLAYER";
+  } else {
+    console.log("computer won round");
+    return "COMPUTER";
   }
 }
+
+game();
