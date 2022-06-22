@@ -8,7 +8,7 @@ function game() {
     playRound(i);
   }
   document.querySelector("button").textContent = "Play new game";
-  logWins();
+  logWins();b  
 }
 
 function playRound(round) {
