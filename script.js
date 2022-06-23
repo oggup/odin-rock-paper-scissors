@@ -2,13 +2,35 @@ let options = ["rock", "paper", "scissors"];
 const winners = [];
 let playerScore = 0;
 let computerScore = 0;
+//what i seek to accomplish
+//on start game click options for rock paper and scissors buttons appear on the screen and start game button is removed from
+//whenever a option button is clicked add small transition to emphasize button clicked
+//visual representation of round
+//keep visual scoreboard
+//display winner on scoreboard and start new game button
+
+//this selects the value of button clicked
+let playerOptions = document.getElementsByClassName("btn-list");
+for(i=0; i<playerOptions.length; i++){
+  playerOptions[i].addEventListener("click",(e)=>{
+    console.log(e.target)
+    console.log(e.target.value)
+  });
+}
+
+
+playerOptions[0].style.border = '1px solid orange';
+
+  
+    
 
 function game() {
   for (let i = 1; i <= 5; i++) {
     playRound(i);
   }
   document.querySelector("button").textContent = "Play new game";
-  logWins();b  
+  logWins();
+  b;
 }
 
 function playRound(round) {
