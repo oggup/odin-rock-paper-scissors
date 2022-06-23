@@ -9,32 +9,55 @@ let computerScore = 0;
 //keep visual scoreboard
 //display winner on scoreboard and start new game button
 
+
 //this selects the value of button clicked
 let playerOptions = document.getElementsByClassName("btn-list");
-for(i=0; i<playerOptions.length; i++){
-  playerOptions[i].addEventListener("click",(e)=>{
-    console.log(e.target)
-    console.log(e.target.value)
+// console.log(playerOptions)
+for (i = 0; i < playerOptions.length; i++) {
+  let option = playerOptions[i];
+  option.addEventListener("click", (e) => {
+    option.style.border = "1px solid orange";
+    let input= e.target.value
+    console.log("input:", e.target.value)
+    playRound(i,input)
   });
 }
 
+function playerChoice(input) {
+  // let input = prompt(" Type rock, paper, or scissors");
+  // while (input == null) {
+  //   input = prompt(" choose rock, paper, or scissors");
+  // }
+  // input.toLowerCase();
+  // let inputCheck = validateInput(input);
+  // while (inputCheck == false) {
+  //   input = prompt(
+  //     "please type response correctly, capitalization does not matter"
+  //   );
+  //   while (input == null) {
+  //     input = prompt(" Type rock, paper, or scissors");
+  //   }
+  //   input = input.toLowerCase();
+  //   inputCheck = validateInput(input);
+  // }
+  return input;
 
-playerOptions[0].style.border = '1px solid orange';
 
-  
-    
+}
+
+
 
 function game() {
   for (let i = 1; i <= 5; i++) {
-    playRound(i);
+    playRound(i, input);
   }
   document.querySelector("button").textContent = "Play new game";
   logWins();
   b;
 }
 
-function playRound(round) {
-  const playerSelection = playerChoice();
+function playRound(round, input) {
+  const playerSelection = input;
   const computerSelection = computerChoice();
   const winner = compareSelections(playerSelection, computerSelection);
   winners.push(winner);
@@ -42,29 +65,14 @@ function playRound(round) {
   logRounds(playerSelection, computerSelection, winner, round);
 }
 
-function playerChoice() {
-  let input = prompt(" Type rock, paper, or scissors");
-  while (input == null) {
-    input = prompt(" Type rock, paper, or scissors");
-  }
-  input.toLowerCase();
-  let inputCheck = validateInput(input);
-  while (inputCheck == false) {
-    input = prompt(
-      "please type response correctly, capitalization does not matter"
-    );
-    while (input == null) {
-      input = prompt(" Type rock, paper, or scissors");
-    }
-    input = input.toLowerCase();
-    inputCheck = validateInput(input);
-  }
+function playerChoice(input) {
+  console.log(input)
   return input;
 }
 
-function validateInput(input) {
-  return options.includes(input);
-}
+// function validateInput(input) {
+//   return options.includes(input);
+// }
 
 function computerChoice() {
   let index = Math.floor(Math.random() * Math.floor(options.length));
