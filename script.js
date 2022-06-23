@@ -1,7 +1,8 @@
 let options = ["rock", "paper", "scissors"];
+let playerOptions = document.querySelectorAll(".btn-list");
 const winners = [];
 let round = 1;
-
+console.log(playerOptions);
 //what i seek to accomplish
 //on start game click options for rock paper and scissors buttons appear on the screen and start game button is removed from
 //whenever a option button is clicked add small transition to emphasize button clicked
@@ -10,31 +11,18 @@ let round = 1;
 //display winner on scoreboard and start new game button
 
 //this selects the value of button clicked
-let playerOptions = document.querySelectorAll(".btn-list");
-// console.log(playerOptions)
-// for (i = 0; i < playerOptions.length; i++) {
-//   let option = playerOptions[i];
-//   option.addEventListener("click", (e) => {
-//     option.classList.toggle("active");
-//     let input = e.target.value;
-//     console.log("input:", e.target.value);
-//     playRound(round, input);
-//     logWins();
-//     round++;
-//   });
-// }
-console.log(playerOptions)
-playerOptions.forEach(option=>{
-  option.addEventListener("click", (e)=>{
+playerOptions.forEach((option) => {
+  option.addEventListener("click", (e) => {
     option.classList.toggle("active");
-    let input = option.value
-    playRound(round,input)
+    let input = option.value;
+    playRound(round, input);
     logWins();
-    round++
-    console.log(input)
-  })
-})
+    round++;
+    console.log(input);
+  });
+});
 
+//function that takes computer and player inputs and compares them
 function playRound(round, input) {
   const playerSelection = input;
   const computerSelection = computerChoice();

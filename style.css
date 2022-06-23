@@ -6,7 +6,7 @@
 
 button {
   width: 150px;
-  height: auto;
+  height: 41px;
   background-color: rgb(200, 174, 140);
   border-radius: 3px;
   font-size: xx-large;
@@ -16,34 +16,52 @@ button:hover {
 }
 .players-container {
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   background-color: rgb(245, 200, 141);
+  height: 500px;
 }
 
-.left-player{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background:rgb(198, 198, 198)
+.left-player {
+  background: rgb(198, 198, 198);
 }
-.middle-scoreboard{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    background:rgb(213, 194, 194)
+.btn-list-container {
+  display: flex;
+  align-items: flex-end;
+  height: 150px;
 }
-
-.right-computer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: rgb(172, 160, 208);
-}
-.score-container{
-    display:flex;
-    align-items:baseline
-
+.middle-scoreboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background: rgb(213, 194, 194);
 }
 
-.active{
-    border:1px solid orange}
+.right-computer {
+  background: rgb(172, 160, 208);
+}
+.jotchua-picture {
+  height: 150px;
+}
+.score-container {
+  display: flex;
+  align-items: baseline;
+  height: 550px;
+}
+.player-andselection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+.active {
+  border: 1px solid orange;
+}
+
+img {
+  padding-bottom: 30px;
+}
+.player-image {
+  height: 150px;
+}
