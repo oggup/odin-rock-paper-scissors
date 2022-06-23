@@ -17,6 +17,7 @@ button:hover {
 .players-container {
   display: flex;
   justify-content:space-between;
+  background-color: rgb(245, 200, 141);
 }
 
 .left-player{
@@ -40,6 +41,9 @@ button:hover {
 }
 .score-container{
     display:flex;
-    align-items: center;
-    justify-content:center
+    align-items:baseline
+
 }
+
+.active{
+    border:1px solid orange}
