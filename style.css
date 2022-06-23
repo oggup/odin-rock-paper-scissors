@@ -16,18 +16,30 @@ button:hover {
 }
 .players-container {
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
 }
 
 .left-player{
     display: flex;
     flex-direction: column;
+    align-items: center;
     background:rgb(198, 198, 198)
 }
 .middle-scoreboard{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
     background:rgb(213, 194, 194)
 }
 
 .right-computer{
-    background: rgb(186, 175, 218)
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgb(172, 160, 208);
+}
+.score-container{
+    display:flex;
+    align-items: center;
+    justify-content:center
 }

@@ -1,7 +1,5 @@
 let options = ["rock", "paper", "scissors"];
 const winners = [];
-let playerScore = 0;
-let computerScore = 0;
 let round = 1;
 //what i seek to accomplish
 //on start game click options for rock paper and scissors buttons appear on the screen and start game button is removed from
@@ -20,29 +18,30 @@ for (i = 0; i < playerOptions.length; i++) {
     let input = e.target.value;
     console.log("input:", e.target.value);
     playRound(round, input);
+    logWins();
     round++;
   });
 }
 
-function playerChoice(input) {
-  // let input = prompt(" Type rock, paper, or scissors");
-  // while (input == null) {
-  //   input = prompt(" choose rock, paper, or scissors");
-  // }
-  // input.toLowerCase();
-  // let inputCheck = validateInput(input);
-  // while (inputCheck == false) {
-  //   input = prompt(
-  //     "please type response correctly, capitalization does not matter"
-  //   );
-  //   while (input == null) {
-  //     input = prompt(" Type rock, paper, or scissors");
-  //   }
-  //   input = input.toLowerCase();
-  //   inputCheck = validateInput(input);
-  // }
-  return input;
-}
+// function playerChoice(input) {
+//   // let input = prompt(" Type rock, paper, or scissors");
+//   // while (input == null) {
+//   //   input = prompt(" choose rock, paper, or scissors");
+//   // }
+//   // input.toLowerCase();
+//   // let inputCheck = validateInput(input);
+//   // while (inputCheck == false) {
+//   //   input = prompt(
+//   //     "please type response correctly, capitalization does not matter"
+//   //   );
+//   //   while (input == null) {
+//   //     input = prompt(" Type rock, paper, or scissors");
+//   //   }
+//   //   input = input.toLowerCase();
+//   //   inputCheck = validateInput(input);
+//   // }
+//   return input;
+// }
 
 // function game() {
 //   for (let i = 1; i <= 5; i++) {
@@ -62,12 +61,12 @@ function playRound(round, input) {
   logRounds(playerSelection, computerSelection, winner, round);
 }
 
-function playerChoice(input) {
-  console.log(input);
-  return input;
-}
+// function playerChoice(input) {
+//   console.log(input);
+//   return input;
+// }
 
-// function validateInput(input) {
+// // function validateInput(input) {
 //   return options.includes(input);
 // }
 
@@ -96,14 +95,19 @@ function logWins() {
   let ties = winners.filter((item) => item == "TIE").length;
   console.log("Results:");
   console.log("player wins:", playerWins);
+  document.getElementById("player-score").innerText = playerWins;
   console.log("computer wins:", computerWins);
+  document.getElementById("computer-score").innerText = playerWins;
   console.log("ties:", ties);
 }
 
 function logRounds(playerChoice, computerChoice, winner, round) {
+  document.getElementById("round-number").innerText = round;
   console.log("Round:", round);
   console.log("Player chose:", playerChoice);
+  document.getElementById("player-selection").innerText = playerChoice;
   console.log("Computer chose", computerChoice);
+  document.getElementById("computer-selection").innerText = computerChoice;
   console.log(winner, "won the round");
   console.log("-------------------------");
 }

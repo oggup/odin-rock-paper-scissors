@@ -17,7 +17,9 @@
     </div>
     <div class="players-container">
       <div class="left-player">
-        <h1>Player Options</h1>
+        <h1>Player</h1>
+       <h2 class="selection" id="player-selection">Selection</h2>
+       <div class="score-container"><h3 class="score-player-score">Player Score:</h3><div class="score" id="player-score"></div></div>
         <div class="btn-list-container">
           <button class="btn-list" value="rock">Rock</button>
           <button class="btn-list" value="paper">Paper</button>
@@ -25,8 +27,12 @@
         </div>
       </div>
 
-      <div class="middle-scoreboard">score</div>
-      <div class="right-computer">computer options</div>
+      <div class="middle-scoreboard"><h1>Round</h1><h1 id="round-number">0</h1></div>
+      <div class="right-computer">
+        <h1>Computer <h1>
+        <h2 class="selection" id="computer-selection">Selection</h2>
+       <div class="score-container"> <h3 class="score">Computer Score:</h3><div id="computer-score"></div></div>
+        </div></div>
     </div>
   </body>
 </html>
