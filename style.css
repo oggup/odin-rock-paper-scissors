@@ -28,12 +28,13 @@ button:hover {
   display: flex;
   align-items: flex-end;
   height: 150px;
+  margin-bottom: 30px;
 }
 .middle-scoreboard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   background: rgb(213, 194, 194);
 }
 

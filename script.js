@@ -18,9 +18,16 @@ playerOptions.forEach((option) => {
     playRound(round, input);
     logWins();
     round++;
+
     // console.log(input);
   });
 });
+
+//random computer Selection
+function computerChoice() {
+  let index = Math.floor(Math.random() * Math.floor(options.length));
+  return options[index];
+}
 
 //function that takes computer and player inputs and compares them
 function playRound(round, input) {
@@ -28,15 +35,10 @@ function playRound(round, input) {
   const computerSelection = computerChoice();
   const winner = compareSelections(playerSelection, computerSelection);
   winners.push(winner);
-  // console.log("winner of the round:", winner);
   logRounds(playerSelection, computerSelection, winner, round);
 }
 
-function computerChoice() {
-  let index = Math.floor(Math.random() * Math.floor(options.length));
-  return options[index];
-}
-
+//compares user selection with computer selection
 function compareSelections(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     document.getElementById("winner").innerText = "It's a draw!";
@@ -46,7 +48,7 @@ function compareSelections(playerSelection, computerSelection) {
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
-    document.getElementById("winner").innerText = "You win!";
+    document.getElementById("winner").innerText = "You won this round!";
     return "PLAYER";
   } else {
     document.getElementById("winner").innerText = "Jotchua won this round!";
@@ -54,32 +56,40 @@ function compareSelections(playerSelection, computerSelection) {
   }
 }
 
-function restartGame(){
-  round=1
-  document.getElementById("round-number").innerText = round
-  document.getElementById("player-selection").innerText ="Selection";
-  // console.log("Computer chose", computerChoice);
-  document.getElementById("computer-selection").innerText = "Selection";
+function restartGame(winners, playerWins, computerWins) {
+  location.reload();
 }
 
 function logWins() {
   let playerWins = winners.filter((item) => item == "PLAYER").length;
   let computerWins = winners.filter((item) => item == "COMPUTER").length;
+  let resetButton = document.createElement("button");
+  resetButton.classList.add("btn-list");
+  resetButton.style.fontSize = "large";
+  resetButton.innerHTML = "Play Again";
+  resetButton.addEventListener("click", restartGame);
   let ties = winners.filter((item) => item == "TIE").length;
   // console.log("Results:");
-  // console.log("player wins:", playerWins);
+  console.log("player wins:", playerWins);
   document.getElementById("player-score").innerText = playerWins;
-  // console.log("computer wins:", computerWins);
+  console.log("computer wins:", computerWins);
   document.getElementById("computer-score").innerText = computerWins;
   // console.log("ties:", ties);
   // console.log(winners)
-  if (playerWins===4){
-    console.log("YOU WON FIVE TIMES")
-    restartGame()
+  if (playerWins === 5) {
+    document.getElementById("winner").innerText = "YOU WON THE GAME";
+    document.getElementById("player-selection").innerText = "WINNER";
+    document.getElementById("computer-selection").innerText = "LOSER";
+    document.getElementById("btn-list-id").innerText = "";
+    document.getElementById("btn-list-id").appendChild(resetButton);
   }
-  if(computerWins===4){
-    console.log("Jotchua won the game")
-    restartGame()
+  if (computerWins === 5) {
+    round = 1;
+    document.getElementById("winner").innerText = "JOTCHUA DEFEATED YOU";
+    document.getElementById("player-selection").innerText = "LOSER";
+    document.getElementById("computer-selection").innerText = "WINNER";
+    document.getElementById("btn-list-id").innerText = "";
+    document.getElementById("btn-list-id").appendChild(resetButton);
   }
 }
 
