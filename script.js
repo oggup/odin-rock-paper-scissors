@@ -13,13 +13,16 @@ let round = 1;
 //this selects the value of button clicked
 playerOptions.forEach((option) => {
   option.addEventListener("click", (e) => {
-    option.classList.toggle("active");
+    option.classList.add("active");
     let input = option.value;
     playRound(round, input);
     logWins();
     round++;
 
     // console.log(input);
+  });
+  option.addEventListener("transitionend", (e) => {
+    option.classList.remove("active");
   });
 });
 
@@ -67,7 +70,14 @@ function logWins() {
   resetButton.classList.add("btn-list");
   resetButton.style.fontSize = "large";
   resetButton.innerHTML = "Play Again";
-  resetButton.addEventListener("click", restartGame);
+  resetButton.addEventListener("click", (e) => {
+    resetButton.classList.add("active");
+
+    restartGame();
+  });
+  resetButton.addEventListener("transitionend", (e) => {
+    resetButton.classList.remove("active");
+  });
   let ties = winners.filter((item) => item == "TIE").length;
   // console.log("Results:");
   console.log("player wins:", playerWins);

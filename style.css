@@ -10,6 +10,7 @@ button {
   background-color: rgb(200, 174, 140);
   border-radius: 3px;
   font-size: xx-large;
+  transition: all, 0.07s;
 }
 button:hover {
   cursor: pointer;
@@ -57,6 +58,9 @@ button:hover {
 }
 
 .active {
+  transform: scale(1, 1);
+  border: orange;
+  box-shadow: 0 0 10px #ffc600;
   border: 1px solid orange;
 }
 
